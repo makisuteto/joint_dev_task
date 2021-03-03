@@ -30,7 +30,7 @@ def q4
   sports = ["サッカー", "フットサル", nil, "野球", "バスケ", nil, "バレー"]
 
   # 以下に回答を記載
-  sports.delete(nil)
+  sports.compact!
   # 以下は変更しないで下さい
   p sports
 end
@@ -85,11 +85,12 @@ def q10
   foods = %w(いか たこ うに しゃけ うにぎり うに軍艦 うに丼)
 
   # 以下に回答を記載
-if foods.include?"うに"
-
-     puts "好物です。"
-  else   
-     puts "まあまあです。"
+  foods.each do |food|
+    if food.include?("うに")
+      puts  "#{food}:好物です"
+    else   
+      puts  "#{food}:まあまあ好きです"
+    end
   end
 end
 
@@ -125,8 +126,7 @@ def q14
   data = { name: "satou", age: 33, address: "saitama", hobby: "soccer", email: "hoge@fuga.com" }
 
   # 以下に回答を記載
- d = data.values
-  puts d
+  puts data.keys
 
 end
 
@@ -135,17 +135,8 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-  if data1.include? :age
-   puts "OK"
-  else
-   puts "NG"
-  end
-
-  if data2.include? :age
-   puts "OK"
-  else
-   puts "NG"
-  end
+  puts data1.key?(:age) ? "OK" : "NG"
+  puts data2.key?(:age) ? "OK" : "NG"
 end
 
 def q16
@@ -157,8 +148,8 @@ def q16
   ]
 
   # 以下に回答を記載
-  users.each do |values|
-  puts "私の名前は#{values[:name]}です。年齢は#{values[:age]}です。"
+  users.each do |user|
+  puts "私の名前は#{user[:name]}です。年齢は#{user[:age]}です。"
   end
 end
 

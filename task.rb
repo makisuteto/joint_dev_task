@@ -208,13 +208,9 @@ end
 
 class Item
   # 以下を修正して下さい
-
+attr_reader :name
   def initialize(name:)
     @name = name
-  end
-  
-  def name
-    @name
   end
 
 end
@@ -245,13 +241,13 @@ class Zoo
   def info_entry_fee(users)
     case users.age
       when 0..5
-        puts  "#{users.name}さんの入場料金は 0円です。"
+        puts  "#{users.name}さんの入場料金は #{@entry_fee[:infant]}円です。"
       when 6..12
-        puts  "#{users.name}さんの入場料金は 400円です。"
+        puts  "#{users.name}さんの入場料金は #{@entry_fee[:children]}円です。"
       when 13..64
-        puts  "#{users.name}さんの入場料金は 800円です。"
+        puts  "#{users.name}さんの入場料金は #{@entry_fee[:adult]}円です。"
       when 65..120
-        puts  "#{users.name}さんの入場料金は 500円です。"
+        puts  "#{users.name}さんの入場料金は #{@entry_fee[:senior]}円です。"
     end
   end
   
